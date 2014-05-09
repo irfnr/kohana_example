@@ -1,0 +1,6 @@
+[2014-05-02 11:53:16] Codeception.ALERT: Use of undefined constant EXT - assumed 'EXT' [] []
+[2014-05-02 11:53:16] Codeception.INFO: # ERROR # [] []
+[2014-05-02 11:53:16] Codeception.INFO: PASSED [] []
+[2014-05-02 11:53:16] Codeception.ALERT: Constant DOCROOT already defined [] []
+[2014-05-02 11:53:16] Codeception.INFO: # ERROR # [] []
+[2014-05-02 11:53:16] Codeception.INFO: PASSED [] []

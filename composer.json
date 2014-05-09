@@ -1,0 +1,9 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "require-dev": {
+    	"codeception/codeception": "1.8.*@dev"
+    }
+}
