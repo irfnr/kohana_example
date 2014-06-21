@@ -8,8 +8,8 @@
 <title>Auth| Kohana</title> 
 </head> 
 <body>
-	<div class="container text-center">
-	<h3>Auth module using the ORM driver for Kohana 3.1</h3>
+	<div class="container">
+	<h3 class="text-center">Auth module using the ORM driver for Kohana 3.1</h3>
 	<div id="content">
 		<?= $content; ?>
 	</div>

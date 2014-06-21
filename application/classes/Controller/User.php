@@ -14,6 +14,7 @@ class Controller_User extends Controller_Template {
 		// Load the user information
 		$user = Auth::instance()->get_user();
 		
+		 
 		// if a user is not logged in, redirect to login page
 		if (!$user)
 		{
@@ -78,11 +79,41 @@ class Controller_User extends Controller_Template {
 			{
 				HTTP::redirect('user/index');
 			} 
-			
+
 			$message = 'Login failed';
 			 
 		}
 	}
+
+	public function action_sub_users() 
+	{
+		 $subUsers = ORM::factory('subuser');
+		 $totalSubUsers = $subUsers->find_all();
+		 $userData = $this->returnSessionData();
+		 
+		 if ( $this->checkIfRequestMethodIsPost() )
+		 {
+			$postData = $this->request->post();
+			$postData['owner_id'] = $userData->id;
+			 
+			$newSubUser = ORM::factory('subuser')->create_subuser($this->request->post(), array(
+					'username',
+					'password',
+					'email',
+					'owner_id'	
+				));
+			$message = 'Sub user added succesfully';
+			// Reset values so form is not sticky
+			$_POST = array();
+
+		 }
+
+		 $this->template->content = View::factory('user/subusers')
+		 ->bind('user', $userData)
+		 ->bind('message', $message)
+		 ->bind('totalSubUsers', $totalSubUsers);
+	}
+
 
 	private function checkIfRequestMethodIsPost() {
 		return HTTP_Request::POST == $this->request->method();
@@ -90,12 +121,17 @@ class Controller_User extends Controller_Template {
 
 	private function loginWithUserDetails() {
 		 $user = ORM::factory('user')
-        ->where('username', '=', 'test14')
-        ->find();
+		->where('username', '=', 'test14')
+		->find();
 		$remember = array_key_exists('remember', $this->request->post()) ? (bool) $this->request->post('remember') : FALSE;
 		return Auth::instance()
 			   ->login($this->request->post('username'), $this->request->post('password'), $remember);
 	}
 	
+	private function  returnSessionData() 
+	{
+		$session =   Session::instance();
+		return $session->get('auth_user');
+	}
 
 }

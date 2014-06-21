@@ -72,20 +72,28 @@ class CodeCoverage implements EventSubscriberInterface
      */
     public function afterSuite(\Codeception\Event\Suite $e)
     {
-        if (!$this->enabled or $this->remote) return;
+        if (!$this->enabled) {
+            return;
+        }
 
         $coverage = $e->getResult()->getCodeCoverage();
 
         $remoteModule = $this->getRemoteConnectionModule();
-        if (!$remoteModule) {
+        if (!($remoteModule instanceof RemoteInterface)) {
             $this->coverage->merge($coverage);
             return;
         };
 
-        $externalCoverage = $this->getRemoteCoverageFile($this->getRemoteConnectionModule() ,'serialized');
-        if (!$externalCoverage) return;
+        $externalCoverage = $this->getRemoteCoverageFile($remoteModule, 'serialized');
+        if (!$externalCoverage) {
+            return;
+        }
+
         $coverage = @unserialize($externalCoverage);
-        if ($coverage === false) return;
+        if ($coverage === false) {
+            return;
+        }
+
         $this->coverage->merge($coverage);
     }
 
@@ -122,11 +130,18 @@ class CodeCoverage implements EventSubscriberInterface
 
     public function printResult(\Codeception\Event\PrintResult $e)
     {
-        if ($this->options['steps']) return;
-        $this->printText($e->getPrinter());
         $this->printPHP();
-        if ($this->options['html']) $this->printHtml();
-        if ($this->options['xml']) $this->printXml();
+        
+        if ($this->options['html']) {
+            $this->printHtml();
+        }
+        if ($this->options['xml']) {
+            $this->printXml();
+        }
+        
+        if (!$this->options['steps']) {
+            $this->printText($e->getPrinter());
+        }
     }
 
     protected function printText(\PHPUnit_Util_Printer $printer)

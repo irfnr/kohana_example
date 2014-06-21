@@ -142,4 +142,10 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
 		'action'     => 'index',
 	));
 
+Route::set('display_user', '(<controller>(/<action>(/<id>)))')
+	->defaults(array(
+		'controller' => 'user',
+		'action'     => 'sub_users'
+	));
+
 Cookie::$salt = 'foobar';

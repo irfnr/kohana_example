@@ -29,7 +29,8 @@ Launch the daemon: `java -jar selenium-server-standalone-2.xx.xxx.jar`
 * browser *required* - browser that would be launched
 * host  - Selenium server host (localhost by default)
 * port - Selenium server port (4444 by default)
-* restart - set to false to share browser sesssion between tests (by default), or set to true to create a session per test
+* restart - set to false to share Selenium sesssion between tests (by default), or set to true to create a new Selenium session per test
+* clearCookies - set to true to clear browser sesssion between tests (by default), or set to false to keep cookies between test cases.
 * wait - set the implicit wait (5 secs) by default.
 * capabilities - sets Selenium2 [desired capabilities](http://code.google.com/p/selenium/wiki/DesiredCapabilities). Should be a key-value array.
 
@@ -964,12 +965,12 @@ $I->switchToWindow();
 
 If the window has no name, the only way to access it is via the `executeInSelenium()` method like so:
 
-```
+``` php
 <?php
 $I->executeInSelenium(function (\Webdriver $webdriver) {
-     $handles=$webDriver->getWindowHandles();
+     $handles=$webdriver->getWindowHandles();
      $last_window = end($handles);
-     $webDriver->switchTo()->window($name);
+     $webdriver->switchTo()->window($last_window);
 });
 ?>
 ```
@@ -1035,7 +1036,8 @@ $I->click('#agree_button');
 ### waitForElementChange
 
 
-Waits until element has changed according to callback function or for $time seconds to pass.
+Waits for element to change or for $timeout seconds to pass. Element "change" is determined
+by a callback function which is called repeatedly until the return value evaluates to true.
 
 ``` php
 <?php
