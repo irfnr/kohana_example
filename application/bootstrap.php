@@ -119,6 +119,7 @@ Kohana::$config->attach(new Config_File);
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
+define('BLOGPATH', DOCROOT.'blog/');
 Kohana::modules(array(
 	//'business'   => EXAMPLEPATH.'business',   // Load the Business Logic
 	'auth'       => MODPATH.'auth',       // Basic authentication
@@ -130,6 +131,8 @@ Kohana::modules(array(
 	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	// 'blog'			=> BLOGPATH.'core',		// Affiliate4you Datafeed System
+	 'automodeler'		=> MODPATH.'automodeler',	// Object Relationship Mapping
 	));
 
 Route::set('default_user_login', '(<controller>(/<action>(/<id>)))')

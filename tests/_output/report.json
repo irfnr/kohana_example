@@ -1,0 +1,20 @@
+{
+    "event": "suiteStart",
+    "suite": "unit",
+    "tests": 1
+}{
+    "event": "testStart",
+    "suite": "unit",
+    "test": "LoginUserTest::testMe"
+}{
+    "event": "test",
+    "suite": "unit",
+    "test": "LoginUserTest::testMe",
+    "status": "pass",
+    "time": 0.013999938964844,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}

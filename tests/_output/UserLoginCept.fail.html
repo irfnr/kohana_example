@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+<link type="text/css" href="/kohana_example/application/assests/css/bootstrap.min.css" rel="stylesheet" /> 
+<link type="text/css" href="/kohana_example/application/assests/css/bootstrap-theme.min.css" rel="stylesheet" /> 
+<link type="text/css" href="/kohana_example/application/assests/css/main.css" rel="stylesheet" /> 
+<title>Blog| Login</title> 
+</head> 
+<body>
+	<div class="container">
+	<div id="content">
+		<div class="container">
+<div class="row">
+<div>
+	<h2>Login Page</h2>
+<? if ($message) : ?>
+	<h3 class="message">
+		Login failed	</h3>
+<? endif; ?>
+</div>
+<div class="form-class">
+<form action="/kohana_example/index.php/user/login" method="post" accept-charset="utf-8"><div class="row">
+<label for="username">Username</label><input type="text" name="username" value="irfan@gmail.com" /></div>
+<div class="row">
+<label for="password">Password</label><input type="password" name="password" /></div>
+<div class="row">
+<input type="checkbox" name="remember" /><label for="remember">Remember Me</label><p>(Remember Me keeps you logged in for 2 weeks)</p>
+</div>
+<div class="row">
+<input type="submit" id="btn_submit" name="login" value="Login" class="btn btn-primary" /></form>
+<span>Or <a href="/kohana_example/index.php/user/create">create a new account</a></span>
+</div>
+</div>
+</div>
+</div>	</div>
+</div>
+</body>
+</html>
