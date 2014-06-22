@@ -126,26 +126,16 @@ Kohana::modules(array(
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
-	'minion'     => MODPATH.'minion',     // CLI Tasks
+	'minion'			=> MODPATH.'minion',		// Database access
 	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	));
 
-/**
- * Set the routes. Each route must have a minimum of a name, a URI and a set of
- * defaults for the URI.
- */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
-
-Route::set('display_user', '(<controller>(/<action>(/<id>)))')
+Route::set('default_user_login', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'user',
-		'action'     => 'sub_users'
+		'action'     => 'index'
 	));
 
 Cookie::$salt = 'foobar';

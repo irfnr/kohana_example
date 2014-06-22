@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 class Usecase_User_CreatesArticle
 {
