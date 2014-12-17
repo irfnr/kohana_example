@@ -8,7 +8,7 @@ error_reporting(E_ALL & ~E_DEPRECATED);
  *
  * @link http://kohanaframework.org/guide/about.install#application
  */
-$application = 'application';
+$application = 'application_test';
 
 /**
  * The directory in which your modules are located.
